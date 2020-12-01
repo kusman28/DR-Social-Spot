@@ -19,7 +19,16 @@ class PostController extends Controller
         return Post::latest()->get();
     }
 
+    public function comments($id) {
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+        return $comments;
+    }
+
     public function posts() {
+        
+        // $wew = User::with('post')->where('id', auth()->user()->id)->latest()->get();
+        // return $wew;
         return User::with('post')->latest()->paginate(8);
     }
 
@@ -65,7 +74,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return Post::findOrFail($id);
     }
 
     /**
@@ -76,7 +85,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -88,7 +97,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $post = Post::find($id);
+        $comment = $post->comment($request->comment);
+        $comment->save();
+        
+
     }
 
     /**
@@ -100,5 +114,16 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function like(Request $request)
+    {
+        $post = Post::find($request->post);
+        $value = $post->likes;
+        $post->likes = $value+1;
+        $post->save();
+        return response()->json([
+            'message'=>'Thanks',
+        ]);
     }
 }

@@ -18,4 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('newsfeed', 'HomeController@index')->name('home');
-// Route::get('profile', 'API\ProfileController@profile');
+Route::get('profile', 'HomeController@index');
+
+Route::get('getProfile', 'API\ProfileController@profile');
+Route::put('profile', 'API\ProfileController@update');
+
+Route::get('status', 'API\ProfileController@status');
+

@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('user');
             $table->text('content');
-            $table->string('likes');
+            $table->unsignedBigInteger('likes');
             $table->timestamps();
         });
     }

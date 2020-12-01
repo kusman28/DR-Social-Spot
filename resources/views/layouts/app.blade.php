@@ -74,10 +74,10 @@
                 </div>
             </div>
         </nav>
-        <router-view></router-view>
         <main class="py-4">
             @yield('content')
         </main>
+        <router-view></router-view>
     </div>
 </body>
 </html>

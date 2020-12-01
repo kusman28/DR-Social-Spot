@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <posts></posts>
+        {{-- <posts></posts> --}}
     </div>
 </div>
 @endsection

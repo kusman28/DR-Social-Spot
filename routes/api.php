@@ -19,3 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources(['post' => 'API\PostController']);
 Route::get('posts','API\PostController@posts');
+
+Route::post('/like/{id}','API\PostController@like');
+Route::get('/comments/{id}', 'API\PostController@comments');
+
+
+
+// Route::get('profile', 'API\ProfileController@profile');
+// Route::put('profile', 'API\ProfileController@update');
