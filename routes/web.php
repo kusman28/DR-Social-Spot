@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('newsfeed', 'HomeController@index')->name('home');
+// Route::get('profile', 'API\ProfileController@profile');
